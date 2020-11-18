@@ -2,15 +2,13 @@ export interface User {
   _id: string;
   name: string;
   email: string;
-  password: string;
   phone: string;
-  techs: string[];
 }
 
 export interface ResponseSignInUser {
-  success: boolean;
   message: string;
   user?: User;
+  token: string;
 }
 
 export interface CurrentRegion {

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { AsyncStorage } from "react-native";
 import api from "../services/api";
-import { ResponseSignInUser, User } from "../models/User";
+import { ResponseSignInUser, User } from "../models/user";
 import { AxiosResponse } from "axios";
 
 interface AuthContextData {
@@ -24,11 +24,19 @@ export const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     async function loadStoregedData() {
       const storegedUser = await AsyncStorage.getItem("@Auth:user");
+      const storegedToken = await AsyncStorage.getItem("@Auth:token");
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (storegedUser) {
+        
+        if(storegedToken){
+          //adicao de token para chamadas futuras, depois adicionar checagem de expiração de token e renovação
+          api.defaults.headers['Authorization'] = `Bearer ${storegedToken}`;
+        }
+
         setUser(JSON.parse(storegedUser));
+
         setLoading(false);
       } else if (!storegedUser) {
         setLoading(false);
@@ -43,9 +51,12 @@ export const AuthProvider: React.FC = ({ children }) => {
       email,
       password,
     });
-
+    
     if (response.data.user) {
       setUser(response.data.user);
+
+      //adicao e token para chamadas futuras
+      api.defaults.headers['Authorization'] = `Bearer ${response.data.token}`;
 
       await AsyncStorage.setItem(
         "@Auth:user",

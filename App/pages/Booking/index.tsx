@@ -15,7 +15,7 @@ import pt from "date-fns/locale/pt";
 import api from "../../services/api";
 
 import styles from "./styles";
-import { User } from "../../models/User";
+import { User } from "../../models/user";
 
 type RouteParamList = {
   spotId: string;

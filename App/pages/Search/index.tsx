@@ -5,7 +5,7 @@ import { SearchBar } from "react-native-elements";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
-import { ResponseCompaniesByName, Company } from "../../models/Company";
+import { ResponseCompaniesByName, Company } from "../../models/company";
 import api from "../../services/api";
 
 export default function Search() {

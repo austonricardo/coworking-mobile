@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
-import { Company, ResponseCompanyById, Spot } from "../../models/Company";
+import { Company, ResponseCompanyById, Spot } from "../../models/company";
 import { SocialIcon } from "react-native-elements";
 import api from "../../services/api";
 import MapLoading from "../../components/MapLoading";

@@ -6,8 +6,8 @@ import {
   getCurrentPositionAsync,
 } from "expo-location";
 import { useNavigation } from "@react-navigation/native";
-import { CurrentRegion } from "../../models/User";
-import { Company, ResponseCompaniesByLocation } from "../../models/Company";
+import { CurrentRegion } from "../../models/user";
+import { Company, ResponseCompaniesByLocation } from "../../models/company";
 
 import MapLoading from "../../components/MapLoading";
 import api from "../../services/api";
